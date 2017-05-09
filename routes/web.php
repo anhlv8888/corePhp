@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix'=>'admin'],function (){
+    Route::group(['prefix'=>'contact'],function (){
+        Route::get('table','ContactController@table')->name('contact.table');
+        Route::get('create','ContactController@getCreate');
+        Route::post('create','ContactController@postCreate')->name('contact.create');
+    });
+});
