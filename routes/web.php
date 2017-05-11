@@ -21,5 +21,6 @@ Route::group(['prefix'=>'admin'],function (){
         Route::post('create','ContactController@postCreate')->name('contact.create');
         Route::get('update/{id}','ContactController@getUpdate');
         Route::post('update/{id}','ContactController@postUpdate')->name('contact.update');
+        Route::get('delete/{id}','ContactController@getDestroy');
     });
 });
