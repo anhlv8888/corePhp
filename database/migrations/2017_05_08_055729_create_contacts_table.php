@@ -20,8 +20,8 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->string('company');
             $table->string('email');
-            $table->string('phone');
-            $table->string('address');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
 

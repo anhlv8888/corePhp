@@ -25,13 +25,7 @@
 
                         {{csrf_field()}}
                         <div class="form-body">
-                            @if(session('notification'))
-                                <div class="alert alert-success">
-                                    <button class="close" data-close="alert"></button>
-                                    {{--Your form validation is successful!--}}
-                                    {{session('notification')}}
-                                </div>
-                            @endif
+
                             <div class="form-group">
                                 <label class="control-label col-md-3">Name <span class="required">
 										* </span>
@@ -49,8 +43,8 @@
                                     </label>
                                     <div class="col-md-4">
                                         <input type="text" name="company" data-required="1" class="form-control" />
-                                        @if (asset($errors->first('name')))
-                                            <p class="help-block">{!! $errors->first('name') !!}</p>
+                                        @if (asset($errors->first('company')))
+                                            <p class="help-block">{!! $errors->first('company') !!}</p>
                                         @endif
                                     </div>
                                 </div>
@@ -60,8 +54,8 @@
                                     </label>
                                     <div class="col-md-4">
                                         <input type="email" name="email" data-required="1" class="form-control"/>
-                                        @if (asset($errors->first('name')))
-                                            <p class="help-block">{!! $errors->first('name') !!}</p>
+                                        @if (asset($errors->first('emai')))
+                                            <p class="help-block">{!! $errors->first('email') !!}</p>
                                         @endif
                                     </div>
                                 </div>
@@ -70,10 +64,7 @@
 										* </span>
                                     </label>
                                     <div class="col-md-4">
-                                        <input type="number" name="number" data-required="1" class="form-control" />
-                                        @if (asset($errors->first('name')))
-                                            <p class="help-block">{!! $errors->first('name') !!}</p>
-                                        @endif
+                                        <input type="text" name="phone" data-required="1" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,24 +72,19 @@
 										* </span>
                                     </label>
                                     <div class="col-md-4">
-                                        <input type="text" name="" data-required="1" class="form-control" address/>
-                                        @if (asset($errors->first('name')))
-                                            <p class="help-block">{!! $errors->first('name') !!}</p>
-                                        @endif
+                                        <input type="text" name="address" data-required="1" class="form-control" address/>
                                     </div>
                                 </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3">Groups
                                 </label>
                                 <div class="col-md-4">
-                                    <select class="form-control" name="group">
+                                    <select class="form-control" name="group_id">
                                         @foreach(App\Group::all() as $value )
                                             <option value="{{$value->id}}">{{$value->name}}</option>
                                         @endforeach
                                     </select>
-                                    @if(asset($errors->first('contact')))
-                                        <p  class="help-block">{!! $errors->first('contact') !!}</p>
-                                    @endif
+
                                 </div>
                             </div>
                         </div>

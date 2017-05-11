@@ -6,7 +6,7 @@
             <div class="portlet box purple">
                 <div class="portlet-title" style="background-color: #3598dc">
                     <div class="caption">
-                        <i class="fa fa-gift"></i>Category Update
+                        <i class="fa fa-gift"></i>Contact Update
                     </div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse">
@@ -21,21 +21,77 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form  action="{{route("category.update",$category->id)}}" method="POST" id="form_sample_1" class="form-horizontal">
+                    <form  action="{{route("contact.update",$contact->id)}}" method="POST" id="form_sample_1" class="form-horizontal">
 
                         {{csrf_field()}}
-                        <input type="hidden" name="id" data-required="1" class="form-control" value="{{$category->id}}"/>
                         <div class="form-body">
-
                             <div class="form-group">
                                 <label class="control-label col-md-3">Name <span class="required">
 										* </span>
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="text" name="name" data-required="1" class="form-control" value="{{$category->Ten}}"/>
+                                    <input type="text" name="name" data-required="1" class="form-control" value="{{$contact->name}}" />
                                     @if (asset($errors->first('name')))
                                         <p class="help-block">{!! $errors->first('name') !!}</p>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3"> Company<span class="required">
+										* </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" name="company" data-required="1" class="form-control" value="{{$contact->company}}" />
+                                    @if (asset($errors->first('company')))
+                                        <p class="help-block">{!! $errors->first('company') !!}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Email <span class="required">
+										* </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="email" name="email" data-required="1" class="form-control" value="{{$contact->email}}"/>
+                                    @if (asset($errors->first('emai')))
+                                        <p class="help-block">{!! $errors->first('email') !!}</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Phone <span class="required">
+										* </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" name="phone" data-required="1" class="form-control" value="{{$contact->phone}}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Address <span class="required">
+										* </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" name="address" data-required="1" class="form-control" value="{{$contact->address}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Groups
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control" name="group_id">
+                                        @foreach(App\Group::all() as $value )
+
+                                            <option
+                                                    @if($contact->group_id == $value->id)
+                                                         {{"selected"}}
+                                                    @endif
+                                                    value="{{$value->id}}">
+                                                {{$value->name}}
+                                            </option>
+
+                                        @endforeach
+                                    </select>
+
                                 </div>
                             </div>
                         </div>
@@ -43,8 +99,7 @@
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <button type="submit" class="btn green">Sửa Đổi</button>
-                                    {{--<button type="reset" class="btn default">Hủy</button>--}}
-                                    <a href="{{route("category.table")}}" class="btn default">Quay Lại</a>
+                                    <a href="{{route("contact.table")}}" class="btn default">Quay Lại</a>
                                 </div>
                             </div>
                         </div>
