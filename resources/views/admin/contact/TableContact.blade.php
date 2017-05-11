@@ -90,6 +90,7 @@
                             {{session('notification')}}
                         </div>
                     @endif
+
                     <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                         <thead>
                         <tr>
@@ -125,7 +126,7 @@
                                     <td>{{$value->company}}</td>
                                     <td>{{$value->email}}</td>
                                     <td>{{$value->phone}}</td>
-                                    <td><a href="#" class=""><i class="fa fa-pencil"/> Edit </a></td>
+                                    <td><a href="{{url("admin/contact/update",['id'=>$value->id])}}" class=""><i class="fa fa-pencil"/> Edit </a></td>
                                     <td><a href="#" class=""><i class="fa fa-trash"/> Delete</a></td>
                                 </tr>
                             @endforeach
